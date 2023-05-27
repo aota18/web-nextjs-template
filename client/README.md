@@ -26,16 +26,20 @@ You can start editing this template by modifying the files in the `/src` folder.
 
 It servers EN(default), KR. To add more languages, see `locales` folder and `next-i18next.config.js` config file.
 
-### Stripe
+### Deployment
 
-Check the process of development in here : https://stripe.com/docs/development/quickstart?lang=node
+Check the vercel website
+
+If you want to deploy your web project, enter below command:
 
 ```
-Test Info
-Card Number : 4242 4242 4242 4242 4242
-Valid Date : 12/34
-CVC : Any Three digit
+vercel delpoy
+```
 
+For the production publish :
+
+```
+vercel --prod
 ```
 
 ## License

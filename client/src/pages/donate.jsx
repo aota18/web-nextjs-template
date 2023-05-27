@@ -1,7 +1,10 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export default function Donate() {
+  const { query } = useRouter()
+  console.log(query)
   const PAYMENT_LINK = 'https://buy.stripe.com/5kA9CL0o2fRkcikbII'
 
   return (
@@ -9,7 +12,11 @@ export default function Donate() {
       <Head>
         <title>Donate - House of Restoration</title>
       </Head>
-      <a href={PAYMENT_LINK}>Donate</a>
+      {query.success ? (
+        <div>Thank you for the donation!</div>
+      ) : (
+        <a href={PAYMENT_LINK}>Donate</a>
+      )}
     </>
   )
 }
