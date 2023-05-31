@@ -1,12 +1,8 @@
-# Pocket
-
-Pocket is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
-
 ## Getting started
 
 To get started with this template, first install the npm dependencies:
 
-```bash
+```
 npm install
 ```
 
@@ -26,7 +22,7 @@ You can start editing this template by modifying the files in the `/src` folder.
 
 It servers EN(default), KR. To add more languages, see `locales` folder and `next-i18next.config.js` config file.
 
-### Deployment
+## Deployment
 
 Check the vercel website
 

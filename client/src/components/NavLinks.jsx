@@ -1,20 +1,16 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Navs } from '@/utils/nav'
 
 export function NavLinks() {
   let [hoveredIndex, setHoveredIndex] = useState(null)
 
-  return [
-    ['Features', '/about'],
-    ['Reviews', '#reviews'],
-    ['Pricing', '#pricing'],
-    ['FAQs', '#faqs'],
-  ].map(([label, href], index) => (
+  return Navs.map(([label, href], index) => (
     <Link
       key={label}
       href={href}
-      className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]"
+      className="text-md lg: relative -mx-3 -my-2 rounded-lg px-3 py-2 font-bold text-gray-700 text-white transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]"
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >
@@ -32,7 +28,7 @@ export function NavLinks() {
           />
         )}
       </AnimatePresence>
-      <span className="relative z-10">{label}</span>
+      <span className="relative z-10">{label.toUpperCase()}</span>
     </Link>
   ))
 }

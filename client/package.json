@@ -10,6 +10,8 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
+    "@geist-ui/core": "^2.3.8",
+    "@geist-ui/icons": "^1.0.2",
     "@headlessui/react": "^1.7.13",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.53.0",
