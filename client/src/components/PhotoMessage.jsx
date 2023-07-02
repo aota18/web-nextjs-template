@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import sample from '@/images/sample2.jpeg'
+
 import { Container } from './Container'
 
-export function PhotoMessage({ title, text }) {
+export function PhotoMessage({ title, text, photo }) {
   return (
     <section
       id="secondary-features"
@@ -12,11 +12,13 @@ export function PhotoMessage({ title, text }) {
       <Container>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
-            <Image src={sample} alt="" unoptimized className="rounded-lg" />
+            <Image src={photo} alt="" unoptimized />
           </div>
-          <div className="m-6 flex flex-col justify-center space-y-4">
+          <div className="flex flex-col justify-center space-y-4 sm:m-6">
             <h2 className="leading-tight">{title}</h2>
-            <p className="flex flex-col justify-center lg:text-lg">{text}</p>
+            <p className="flex flex-col justify-center text-gray-500 lg:text-xl">
+              {text}
+            </p>
           </div>
         </div>
       </Container>

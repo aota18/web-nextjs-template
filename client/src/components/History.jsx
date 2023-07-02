@@ -47,7 +47,7 @@ export function History() {
       dateTime: '2022-04-06',
     },
     {
-      name: t('history.eigth'),
+      name: t('history.eighth'),
       date: 'August, 2012',
       dateTime: '2022-04-06',
     },

@@ -6,26 +6,20 @@ import { KeyMessage } from '@/components/KeyMessage'
 import { PageHero } from '@/components/PageHero'
 import { PhotoMessage } from '@/components/PhotoMessage'
 import { Website } from '@/utils/variables'
-import backgroundImage from '@/images/sample.jpg'
+import backgroundImage from '@/images/sample/IMG_3172.jpg'
+import HomelessImg from '@/images/sample/IMG_0074.jpg'
 import Head from 'next/head'
 import Image from 'next/image'
 import { PhotoMessageRight } from '@/components/PhotoMessageRight'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
-const t = 'Street People'
-const m =
-  ' They are people who lose everything in life and at home to curiosity in adolescence are drug addicts, alcoholics, prostitutes, unemployed, tramps, homeless people, and live in the streets and parks due to reduced well-fair payments by the Canadian government.'
 
-const t2 = 'Our Mission'
-const m2 =
-  'Our mission is to train street people reborn in the Lord as missionaries to cultivate missionaries who can help native North American regions and countries and peoples where the gospel is withering.'
 export default function WhatWeDo() {
-  const title = 'People are on the street'
-  const text =
-    'In Vancouver, there are approx 8,000 street people living on the streets with no access to shelter or education. The government is helping them free of charge with all sorts of good programs for them, but very few, and most of them are not changing.'
 
-  const title2 = 'We are the church'
-  const text2 =
-    'Among the marginalized, especially the Tant Church, where people become friends with Street People, become family members, save God, and worship together. Through worship, street people are being patient, patient, and helping until they return as children of God.'
+  const {t} = useTranslation(['what-we-do', 'home']);
+
+
   return (
     <>
       <Head>
@@ -42,22 +36,33 @@ export default function WhatWeDo() {
         <div className="relative">
           <div className="absolute inset-x-0 -bottom-14 -top-48 h-72 translate-y-48 overflow-hidden lg:h-96 lg:translate-y-[0%]">
             <Image
-              className="absolute brightness-50"
+              className="absolute brightness-70"
               src={backgroundImage}
               alt=""
               priority
               unoptimized
+              width={1800}
             />
           </div>
-          <PageHero title={'What we do'} />
-          <KeyMessage title={title} text={text} />
-          <PhotoMessage title={t} text={m} />
-          <KeyMessage title={title2} text={text2} />
-          <PhotoMessageRight title={t2} text={m2} />
+          <PageHero title={t('home:header.what_we_do')} />
+          <KeyMessage title={t('key_message1_title')} text={t('key_message1_detail')} />
+          <PhotoMessage title={t('street_people_title')} text={t('street_people_detail')} photo={HomelessImg} />
+          <KeyMessage title={t('key_message2_title')} text={t('key_message2_detail')} />
+          <PhotoMessageRight title={t('home:mission_title')} text={t('home:mission_detail')} />
           <CallToAction />
         </div>
       </main>
       <Footer />
     </>
   )
+}
+
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['home','what-we-do'])),
+      // Will be passed to the page component as props
+    },
+  }
 }

@@ -10,7 +10,7 @@ export function KeyMessage({ title, text }) {
       className="py-20 sm:py-32"
     >
       <Container>
-        <div className="mx-auto max-w-2xl space-y-10 sm:text-center">
+        <div className="mx-auto max-w-2xl space-y-10 text-center">
           <h2 className="text-4xl font-bold tracking-tight text-gray-900">
             {title}
           </h2>

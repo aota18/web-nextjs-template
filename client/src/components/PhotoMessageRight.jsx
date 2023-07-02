@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import sample from '@/images/sample2.jpeg'
+import YY from '@/images/sample/IMG_0100.jpg'
 import { Container } from './Container'
 
 export function PhotoMessageRight({ title, text }) {
@@ -11,12 +11,18 @@ export function PhotoMessageRight({ title, text }) {
     >
       <Container>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div className="m-6 flex flex-col justify-center space-y-4">
+          <div className="flex flex-col justify-center space-y-4 sm:m-6">
             <h2 className="leading-tight">{title}</h2>
-            <p className="flex flex-col justify-center lg:text-lg">{text}</p>
+            <p className="flex flex-col text-gray-500 justify-center lg:text-xl">{text}</p>
           </div>
-          <div>
-            <Image src={sample} alt="" unoptimized className="rounded-lg" />
+          <div className="flex items-center justify-center">
+            <Image
+              src={YY}
+              alt=""
+              unoptimized
+              
+              height={640}
+            />
           </div>
         </div>
       </Container>

@@ -4,10 +4,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Globe } from '@geist-ui/icons'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
+import { LogoB, LogoW } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
 import { useRouter } from 'next/router'
 import { Navs } from '@/utils/nav'
+import { STRIPE_PAYMENT_LINK } from '@/utils/variables'
+import { useEffect, useState } from 'react'
+import { useMediaQuery } from '@geist-ui/core'
+import { useTranslation } from 'next-i18next'
 
 function MenuIcon(props) {
   return (
@@ -48,11 +52,17 @@ function MobileNavLink({ children, ...props }) {
 }
 
 export function Header() {
+  const { t } = useTranslation('home')
+
+  const Navs = [
+    [t('header.our_story'), '/about'],
+    [t('header.what_we_do'), '/what-we-do'],
+    [t('header.ways_to_give'), '/ways-to-give'],
+    [t('header.contact'), '/ways-to-give/#contact'],
+  ]
   const { locale, push } = useRouter()
 
-  const onClickChangeLang = () => {
-    push('/')
-  }
+  const isLG = useMediaQuery('lg', { match: 'up' })
 
   return (
     <header>
@@ -60,18 +70,27 @@ export function Header() {
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+              {isLG && <LogoW className="h-10 w-auto" />}
+              {!isLG && <LogoB className="h-10 w-auto" />}
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
             </div>
           </div>
+
           <div className="flex items-center gap-6">
+            <Link
+              href="/"
+              className="block cursor-pointer text-black lg:hidden"
+              locale={locale === 'ko' ? 'en' : 'ko'}
+            >
+              <Globe />
+            </Link>
             <Popover className="lg:hidden">
               {({ open }) => (
                 <>
                   <Popover.Button
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
+                    className="relative z-10 -m-2 inline-flex items-center stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
                     aria-label="Toggle site navigation"
                   >
                     {({ open }) =>
@@ -103,17 +122,23 @@ export function Header() {
                             y: -32,
                             transition: { duration: 0.2 },
                           }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
+                          className="absolute inset-x-0 top-0 z-0 origin-top  bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
                         >
                           <div className="space-y-4">
                             {Navs.map(([label, href], index) => (
-                              <MobileNavLink href={href} locale={locale}>
+                              <MobileNavLink
+                                key={index}
+                                href={href}
+                                locale={locale}
+                              >
                                 {label.toUpperCase()}
                               </MobileNavLink>
                             ))}
                           </div>
-                          <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/donate">Donate</Button>
+                          <div className="mt-8 flex flex-col gap-4 text-xl">
+                            <Button href={STRIPE_PAYMENT_LINK}>
+                              {t('btn.donate')}
+                            </Button>
                           </div>
                         </Popover.Panel>
                       </>
@@ -122,17 +147,20 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <a
+            <Link
               href="/"
-              onClick={() => onClickChangeLang()}
               className="hidden cursor-pointer text-white lg:block"
               locale={locale === 'ko' ? 'en' : 'ko'}
             >
               <Globe />
-            </a>
+            </Link>
 
-            <Button href="/donate" className="hidden lg:block" color="primary">
-              Donate
+            <Button
+              href={STRIPE_PAYMENT_LINK}
+              className="hidden lg:block"
+              color="primary"
+            >
+              {t('btn.donate')}
             </Button>
           </div>
         </Container>

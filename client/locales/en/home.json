@@ -1,3 +1,35 @@
 {
-  "headline": "Bring back my lost Children"
+  "header": {
+    "home": "home",
+    "our_story": "our story",
+    "what_we_do": "what we do",
+    "ways_to_give": "ways to give",
+    "contact": "contact"
+  },
+  "headline": "Bring back my lost Children",
+  "headline_detail": "To open their eyes, so that they may turn from darkness to light and from the power of Satan to God, that they may receive forgiveness of sins and a place among those who are sanctified by faith in me. (Acts 26:18)",
+  "mission_title": "Our Mission",
+  "mission_detail": "Our mission is to train Street People reborn in the Lord as missionaries and to cultivate missionaries who can help native North American regions and countries and peoples where the gospel is withering.",
+  "ministry_title": "Ministries",
+  "ministry": {
+    "street_service": {
+      "name": "Street Service",
+      "date": "Every Saturday",
+      "where": ""
+    },
+    "busking_worship": {
+      "name": "Busking Worship",
+      "date": "Every Thursday",
+      "where": ""
+    }
+  },
+  "btn": {
+    "donate": "Donate",
+    "learn_more": "Learn more",
+    "contact": "Contact"
+  },
+  "support": {
+    "title": "Support us",
+    "detail": "Help us get the Street People back"
+  }
 }

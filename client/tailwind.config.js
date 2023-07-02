@@ -19,6 +19,9 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
     },
+    minHeight: {
+      '1/2': '50%',
+    },
     extend: {
       animation: {
         'fade-in': 'fade-in 0.5s linear forwards',
@@ -28,6 +31,17 @@ module.exports = {
         'spin-reverse': 'spin-reverse 1s linear infinite',
         'spin-reverse-slow': 'spin-reverse 4s linear infinite',
         'spin-reverse-slower': 'spin-reverse 6s linear infinite',
+      },
+      scale: {
+        110: '1.10',
+      },
+      brightness: {
+        25: '.25',
+        30: '.30',
+        40: '.40',
+        60: '.60',
+        70: '.70',
+        175: '1.75',
       },
       borderRadius: {
         '4xl': '2rem',

@@ -4,20 +4,9 @@ import clsx from 'clsx'
 import { motion, useInView, useMotionValue } from 'framer-motion'
 
 import { AppScreen } from '@/components/AppScreen'
-import { AppStoreLink } from '@/components/AppStoreLink'
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { PhoneFrame } from '@/components/PhoneFrame'
-import logoBbc from '@/images/logos/bbc.svg'
-import logoCbs from '@/images/logos/cbs.svg'
-import logoCnn from '@/images/logos/cnn.svg'
-import logoFastCompany from '@/images/logos/fast-company.svg'
-import logoForbes from '@/images/logos/forbes.svg'
-import logoHuffpost from '@/images/logos/huffpost.svg'
-import logoTechcrunch from '@/images/logos/techcrunch.svg'
-import logoWired from '@/images/logos/wired.svg'
 import { useTranslation } from 'next-i18next'
-import backgroundImage from '@/images/sample.jpg'
+import backgroundImage from '@/images/sample/IMG_0363.jpg'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -40,7 +29,7 @@ function BackgroundIllustration(props) {
           stroke={`url(#${id}-gradient-1)`}
           strokeLinecap="round"
         />
-        <defs>
+        <defs>n
           <linearGradient
             id={`${id}-gradient-1`}
             x1="1"
@@ -340,38 +329,27 @@ export function Hero() {
   const { t } = useTranslation('home')
 
   return (
-    <div className="relative ">
-      <div className="absolute inset-x-0 -bottom-14 -top-48 translate-y-56 overflow-hidden lg:translate-y-[0%] ">
+    <div className="relative py-24  min-h-1/2">
+      <div className="absolute inset-x-0 -bottom-14 -top-40 translate-y-56 overflow-hidden lg:translate-y-[0%] ">
         <Image
-          className="absolute brightness-50"
+          className="absolute scale-110 brightness-70 "
+    
           src={backgroundImage}
           alt=""
           priority
           unoptimized
         />
       </div>
-      <div className=" mt-0 overflow-hidden  py-16 sm:py-32 lg:pb-32 xl:pb-36">
+      <div className=" mt-0 overflow-hidden xs:my-32 sm:py-16 lg:pb-16 lg:my-16 xl:pb-36">
         <Container>
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
             <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
               <h1 className="text-3xl font-bold tracking-tight text-white sm:text-6xl">
-                {t('greeting')}
+                {t('headline')}
               </h1>
-              <p className="mt-6 text-lg text-white">
-                To open their eyes, so that they may turn from darkness to light
-                and from the power of Satan to God, that they may receive
-                forgiveness of sins and a place among those who are sanctified
-                by faith in me. (Acts 26:18)
+              <p className="mt-6 text-sm text-white sm:text-xl">
+              {t('headline_detail')}
               </p>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4 text-white">
-                <Button
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  variant="outline"
-                >
-                  <PlayIcon className="h-6 w-6 flex-none" />
-                  <span className="ml-2.5 text-white">Watch the video</span>
-                </Button>
-              </div>
             </div>
           </div>
         </Container>

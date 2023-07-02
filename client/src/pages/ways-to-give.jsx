@@ -1,21 +1,24 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+
+
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import { Website } from '@/utils/variables'
 import { Header } from '@/components/Header'
-import backgroundImage from '@/images/sample.jpg'
+import backgroundImage from '@/images/sample/IMG_1629.jpg'
 import Image from 'next/image'
 import { PageHero } from '@/components/PageHero'
 import { KeyMessage, SecondaryFeatures } from '@/components/KeyMessage'
 import { CardList } from '@/components/CardList'
 import { Container } from '@/components/Container'
 import { FAQ } from '@/components/FAQ'
+import { Footer } from '@/components/Footer'
+import ContactUs from '@/components/ContactUs'
 
 export default function WaysToGive() {
-  const { locale, locales, defaultLocale, asPath } = useRouter()
 
-  const { t } = useTranslation('home')
+
+  const {t} = useTranslation([ 'ways-to-give','home']);
 
   return (
     <>
@@ -25,38 +28,44 @@ export default function WaysToGive() {
       <Header />
       <main>
         <div className="relative">
-          <div className="absolute inset-x-0 -bottom-14 -top-48 h-72 translate-y-48 overflow-hidden lg:h-96 lg:translate-y-[0%]">
+        <div className="absolute inset-x-0 -bottom-14 -top-48 h-72 translate-y-48 overflow-hidden lg:h-96 lg:translate-y-[0%]">
             <Image
-              className="absolute brightness-50"
+              className="absolute brightness-70"
               src={backgroundImage}
               alt=""
               priority
               unoptimized
+              width={1920}
             />
           </div>
-          <PageHero title={'Ways To Give'} />
+          <PageHero title={t('home:header.ways_to_give')} />
           <KeyMessage
             text={
-              '"Tell the poor the good news and give freedom to the captives Let us go forward together in proclaiming the blind to see again, to release the oppressed, and to proclaim the year of your grace." (Luke 4:18)'
+              t('key_message_detail')
             }
           />
           <Container></Container>
           <Container>
-            <CardList />
+            <CardList t={t}/>
           </Container>
           <Container>
-            <FAQ />
+            <FAQ t={t}/>
+          </Container>
+          <Container>
+            <ContactUs t={t}/>
           </Container>
         </div>
       </main>
+      <Footer />
     </>
   )
 }
 
+
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['home'])),
+      ...(await serverSideTranslations(locale, ['home','ways-to-give'])),
       // Will be passed to the page component as props
     },
   }
