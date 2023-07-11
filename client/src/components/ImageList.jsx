@@ -23,7 +23,7 @@ export function ImageList() {
             >
               <Image
                 src={image}
-                alt=""
+                alt="alt"
                 sizes="(min-width: 640px) 18rem, 11rem"
                 className="absolute inset-0 h-full w-full object-cover"
               />

@@ -25,7 +25,7 @@ import { useEffect, useMemo, useRef } from 'react'
 const Map = ({ center }) => {
   const containerStyle = {
     width: '1280px',
-    height: '396',
+    height: '396px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -112,7 +112,7 @@ export default function Home() {
               >
                 <Image
                   src={post.imageUrl}
-                  alt=""
+                  alt="post"
                   className="absolute inset-0 -z-10 h-full w-full object-cover brightness-150"
                   width={400}
                   height={400}
